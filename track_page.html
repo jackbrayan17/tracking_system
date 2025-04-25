@@ -149,7 +149,7 @@
         
         async function loadDepartureCountries() {
             try {
-                const response = await fetch('http://localhost:5000/countries');
+                const response = await fetch('https://trackingsystem-iota.vercel.app/countries');
                 const countries = await response.json();
                 populateCountrySelect('departureCountry', countries);
             } catch (err) {
@@ -160,7 +160,7 @@
         
         async function loadArrivalCountries() {
             try {
-                const response = await fetch('http://localhost:5000/countries');
+                const response = await fetch('https://trackingsystem-iota.vercel.app/countries');
                 const countries = await response.json();
                 populateCountrySelect('arrivalCountry', countries);
             } catch (err) {
@@ -194,7 +194,7 @@
         
         async function loadTowns(country, selectId) {
             try {
-                const response = await fetch(`http://localhost:5000/towns/${country}`);
+                const response = await fetch(`https://trackingsystem-iota.vercel.app/towns/${country}`);
                 const towns = await response.json();
                 const selectElement = document.getElementById(selectId);
                 selectElement.innerHTML = '<option value="">Select Town</option>';
@@ -264,7 +264,7 @@
             };
         console.log(trackData);
             try {
-                const response = await fetch('http://localhost:5000/create-track', {
+                const response = await fetch('https://trackingsystem-iota.vercel.app/create-track', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -296,7 +296,7 @@ async function loadTrack() {
     }
 
     try {
-        const response = await fetch(`http://localhost:5000/track/${code}`);
+        const response = await fetch(`https://trackingsystem-iota.vercel.app/track/${code}`);
         if (!response.ok) {
             throw new Error("Track not found.");
         }
