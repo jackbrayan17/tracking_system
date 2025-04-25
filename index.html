@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shipping Tracker</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+<style>
+    /* Set the width of the container */
+.slider-logo {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ensure the slider track stays in a row */
+.slider-track-logo {
+  display: flex;
+  animation: slide-left 10s linear infinite;
+}
+
+/* Animation for sliding the logos to the left */
+@keyframes slide-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* Optional: Adjust the spacing between logos */
+.slide-logo {
+  margin-right: 20px;
+}
+
+    </style>
+
+  </head>
+  <body class="font-sans bg-gray-100">
+    <!-- Modal -->
+    <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+      <div class="bg-white p-6 rounded shadow-lg w-96 relative">
+        <button onclick="document.getElementById('modal').style.display='none'" class="absolute top-2 right-2 text-gray-500 hover:text-red-600 text-lg font-bold">
+          &times;
+        </button>
+        <h2 class="text-xl font-bold mb-4 text-center">Track Shipping</h2>
+        <input
+          type="text"
+          placeholder="Enter Tracking Code"
+          class="w-full border border-gray-300 px-4 py-2 rounded mb-4"
+        />
+        <button
+          onclick="window.location.href='/track'"
+          class="w-full bg-red-600 text-white py-2 rounded hover:bg-red-700"
+        >Track</button>
+      </div>
+    </div>
+
+    <!-- Top Navbar (Dark Blue) -->
+    <div class="bg-blue-900 text-white text-sm py-1 px-4 flex justify-between items-center">
+      <div>Track your shipment Anytime Anywhere</div>
+      <div class="flex items-center space-x-4">
+        <span>+237 657 765 765</span>
+        <i class="fab fa-facebook"></i>
+        <i class="fab fa-instagram"></i>
+        <i class="fab fa-linkedin"></i>
+        <i class="fab fa-dropbox"></i>
+        <i class="fab fa-whatsapp"></i> 
+        
+      </div>
+    </div>
+
+    <!-- Red Navbar -->
+    <div class="bg-red-600 text-white px-6 py-6 flex items-center justify-between">
+        <div class="flex items-center space-x-4">
+          <img src="logo.png" alt="Logo" class="h-12 w-auto" />
+          <!-- <span class="text-3xl font-bold">LOGO</span> -->
+        </div>
+        <div class="flex space-x-6 items-center text-lg">
+          <a href="#" class="hover:text-gray-300">Home</a>
+          <a href="aboutus.html" class="hover:text-gray-300">About Us</a>
+          <a href="insurance.html" class="hover:text-gray-300">Insurance</a>
+          <a href="stamp.html" class="hover:text-gray-300">Restricted Stamps</a>
+          <a href="track_page.html" class="hover:text-gray-300">Track your shipment</a>
+          <a href="contactus.html" class="hover:text-gray-300">Contact Us</a>
+          <div class="relative group">
+            <button class="hover:text-gray-300">Services</button>
+            <div class="absolute hidden group-hover:block bg-white text-black mt-2 py-2 w-48 shadow-xl z-40">
+              <a href="services/servicelist.html" class="block px-4 py-2 hover:bg-gray-100">Service List</a>
+              <a href="services/airfreight.html" class="block px-4 py-2 hover:bg-gray-100">Air Freight</a>
+              <a href="services/oceanfreight.html" class="block px-4 py-2 hover:bg-gray-100">Ocean Freight</a>
+              <a href="services/exportnimport.html" class="block px-4 py-2 hover:bg-gray-100">Export & Import</a>
+              <a href="services/roadfreight.html" class="block px-4 py-2 hover:bg-gray-100">Road Freight</a>
+              <a href="services/logistics.html" class="block px-4 py-2 hover:bg-gray-100">Logistics</a>
+            </div>
+          </div>
+          <a href="#" class="border border-white px-4 py-2 rounded hover:bg-white hover:text-red-600 transition">Get a quote</a>
+        </div>
+      </div>
+
+    <!-- Hero Section -->
+   <!-- Hero Section -->
+<div class="relative h-screen bg-cover bg-center" style="background-image: url('img/image2.jpg');">
+    <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center text-white px-4">
+      <p class="text-sm">Safety, quality & professionalism</p>
+      <h1 class="text-4xl md:text-6xl font-bold text-center mt-2">Perfect company with perfect solutions</h1>
+      <button class="mt-6 bg-white text-blue-900 px-6 py-2 rounded shadow hover:bg-blue-900 hover:text-white transition duration-300">
+        Learn More +
+      </button>
+    </div>
+  </div>
+  
+
+    <!-- Cards Section -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 p-6">
+
+        <!-- Red Card -->
+        <div class="bg-red-600 text-white p-6 rounded shadow flex flex-col justify-between min-h-[320px]">
+          <h2 class="text-xl font-bold mb-6">Imagine what we can do for your business.</h2>
+          <div class="mt-auto">
+            <button class="bg-white text-red-600 px-5 py-2 rounded shadow hover:bg-gray-100 transition">
+              Read More +
+            </button>
+          </div>
+        </div>
+    
+        <!-- White Card 1 -->
+        <div class="bg-white p-6 rounded shadow flex flex-col min-h-[320px]">
+          <i class="fas fa-box-open text-red-600 text-3xl mb-4"></i>
+          <h3 class="text-xl font-bold text-black mb-2">Logistics to connect your world</h3>
+          <p class="text-sm text-gray-800 flex-grow">
+            Provides temperature-controlled storage and distribution of perishable food items. They ensure goods arrive at grocery stores and restaurants around the country in pristine condition.
+          </p>
+        </div>
+    
+        <!-- White Card 2 -->
+        <div class="bg-white p-6 rounded shadow flex flex-col min-h-[320px]">
+          <i class="fas fa-network-wired text-red-600 text-3xl mb-4"></i>
+          <h3 class="text-xl font-bold text-black mb-2">Thinking the way forward</h3>
+          <p class="text-sm text-gray-800 flex-grow">
+            Maintains an international network across over 120 countries, ranking number one in America.
+          </p>
+        </div>
+    
+        <!-- White Card 3 -->
+        <div class="bg-white p-6 rounded shadow flex flex-col min-h-[320px]">
+          <i class="fas fa-rocket text-red-600 text-3xl mb-4"></i>
+          <h3 class="text-xl font-bold text-black mb-2">Let your success ride with us</h3>
+          <p class="text-sm text-gray-800 flex-grow">
+            When success meets success, there will be no room for failure, your goods must be delivered right on time.
+          </p>
+        </div>
+      </div>
+
+    <!-- Process Section -->
+<section class="bg-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <!-- Left Column -->
+        <div class="relative bg-blue-900 text-white p-8 rounded-lg shadow-lg min-h-[545px]">
+               <h2 class="text-3xl font-bold mb-6">We change the way we do business.</h2>
+          <div class="relative">
+            <img class="rounded-lg shadow-lg" src="image.jpg" alt="About Us Image">
+         <br>
+
+            <div class="bg-red-600 px-6 py-4 absolute bottom-0 left-0 transform translate-y-1/2 w-full rounded-b-lg">
+              <div class="flex items-center space-x-4">
+                <div class="text-white text-4xl bg-white bg-opacity-20 p-3 rounded-full">
+                  <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div>
+                  <h2 class="text-2xl font-bold">4.269m</h2>
+                  <h4 class="text-sm">Choose possibility in every route</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Right Column -->
+        <div>
+          <h2 class="text-3xl font-bold mb-4">Our process moving</h2>
+          <p class="text-gray-700 mb-8">Focus is having the unwavering attention to complete what you set out to do.</p>
+  
+          <div class="space-y-8">
+            <!-- Step 01 -->
+            <div class="flex items-start">
+              <div class="relative mr-6">
+                <div class="bg-blue-100 text-blue-800 w-16 h-16 flex items-center justify-center rounded-full shadow-lg text-3xl">
+                  <i class="fas fa-comments"></i>
+                </div>
+                <span class="absolute -top-2 -right-1 bg-blue-600 text-white text-sm w-6 h-6 flex items-center justify-center rounded-full font-bold">01</span>
+              </div>
+              <div>
+                <h4 class="text-xl font-semibold mb-2">Contact us</h4>
+                <p class="text-gray-600">You have a querry, or in need of a quote, feel free to contact us through livechat, email and phone number, we are on WhatsApp.</p>
+              </div>
+            </div>
+  
+            <!-- Step 02 -->
+            <div class="flex items-start">
+              <div class="relative mr-6">
+                <div class="bg-blue-100 text-blue-800 w-16 h-16 flex items-center justify-center rounded-full shadow-lg text-3xl">
+                  <i class="fas fa-shipping-fast"></i>
+                </div>
+                <span class="absolute -top-2 -right-1 bg-blue-600 text-white text-sm w-6 h-6 flex items-center justify-center rounded-full font-bold">02</span>
+              </div>
+              <div>
+                <h4 class="text-xl font-semibold mb-2">Quick Delivery</h4>
+                <p class="text-gray-600">Logistic Cargo Express. With so many partners and networks all over the world, we ensure fast and efficient delivery.</p>
+              </div>
+            </div>
+  
+            <!-- Step 03 -->
+            <div class="flex items-start">
+              <div class="relative mr-6">
+                <div class="bg-blue-100 text-blue-800 w-16 h-16 flex items-center justify-center rounded-full shadow-lg text-3xl">
+                  <i class="fas fa-box-open"></i>
+                </div>
+                <span class="absolute -top-2 -right-1 bg-blue-600 text-white text-sm w-6 h-6 flex items-center justify-center rounded-full font-bold">03</span>
+              </div>
+              <div>
+                <h4 class="text-xl font-semibold mb-2">Careful Handling</h4>
+                <p class="text-gray-600">We handle your goods with respect. Our trained staff has facilities for breakables, beverages, and perishable goods.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+      <br>
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold mb-3">How it Works?</h2>
+        <p class="text-gray-600">Get a quote or contact us for details.</p>
+      </div>
+  
+      <div class="grid md:grid-cols-3 gap-12 relative">
+        <!-- Vertical dotted line for desktop -->
+        <div class="hidden md:block absolute top-0 bottom-0 left-1/3 w-0.5 border-r-2 border-dotted border-gray-300 transform -translate-x-1/2 z-0"></div>
+        <div class="hidden md:block absolute top-0 bottom-0 left-2/3 w-0.5 border-r-2 border-dotted border-gray-300 transform -translate-x-1/2 z-0"></div>
+  
+        <!-- Step 1 -->
+        <div class="flex flex-col items-center text-center relative z-10">
+          <div class="bg-gray-200 text-blue-800 p-6 rounded-full shadow-md mb-6">
+            <i class="fas fa-headphones-alt fa-2x"></i>
+          </div>
+          <h4 class="text-xl font-semibold">Book Your Boat Through Website and Call</h4>
+        </div>
+  
+        <!-- Step 2 -->
+        <div class="flex flex-col items-center text-center relative z-10">
+          <div class="bg-gray-200 text-blue-800 p-6 rounded-full shadow-md mb-6">
+            <i class="fas fa-truck fa-2x"></i>
+          </div>
+          <h4 class="text-xl font-semibold">Our System Safe &amp; Secure Delivery</h4>
+        </div>
+  
+        <!-- Step 3 -->
+        <div class="flex flex-col items-center text-center relative z-10">
+          <div class="bg-gray-200 text-blue-800 p-6 rounded-full shadow-md mb-6">
+            <i class="fas fa-envelope fa-2x"></i>
+          </div>
+          <h4 class="text-xl font-semibold">Accept updates and report via SMS &amp; Email</h4>
+        </div>
+      </div>
+    </div>
+  </section>
+  <br>
+  <div class="body py-20 bg-gray-50">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold mb-2">Our Partners</h2>
+      <p class="text-lg text-gray-700 mb-4">We work hand to hand with the most trusted <br> brands in the market.</p>
+  
+      <!-- Logo Slider -->
+      <div class="slider-logo overflow-hidden relative">
+        <div class="slider-track-logo flex space-x-8 animate-slide-left">
+          <div class="slide-logo">
+            <img src="logo_black.png" width="200" alt="Company Logo">
+          </div>
+          <div class="slide-logo">
+            <img src="DHL.png" width="200" alt="DHL Logo">
+          </div>
+          <div class="slide-logo">
+            <img src="FeDex.png" width="200" alt="FedEx Logo">
+          </div>
+          <div class="slide-logo">
+            <img src="USPS.png" width="200" alt="USPS Logo">
+          </div>
+          <div class="slide-logo">
+            <img src="UPS.png" width="200" alt="UPS Logo">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <section class="space-pt pb-20 bg-gray-100">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="row mb-12">
+        <div class="col-lg-8 col-xl-9 mb-6 md:mb-0">
+          <div class="section-title mb-6 text-center md:text-left">
+            <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-3">We live for the art of moving.</h2>
+            <p class="text-lg text-gray-600 mb-0">This is perhaps the single biggest obstacle that all of us must overcome in order to be successful. A smooth journey requires clarity, precision, and timely actions.</p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-xl-3 text-center md:text-right">
+          <a class="btn btn-dark px-6 py-3 text-lg font-semibold rounded-md shadow-lg bg-blue-600 hover:bg-blue-700 transition duration-300" href="contact.html">
+            Contact Us <i class="fas fa-long-arrow-alt-right ml-3"></i>
+          </a>
+        </div>
+      </div>
+  
+      <!-- Map & Contact Info -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Google Map -->
+        <div class="col-span-1">
+          <iframe class="w-full h-96 rounded-lg shadow-lg" src="https://www.google.com/maps/embed?origin=mfe&amp;pb=!1m2!2m1!1s2105+McComas+Way+#300,+Virginia+Beach,+VA+23456,+USA" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+  
+        <!-- Contact Info -->
+        <div class="col-span-1 bg-gray-900 text-white text-center rounded-lg p-8 shadow-xl">
+          <img class="img-fluid mb-4 mx-auto" src="logo.png" alt="Company Logo" width="150">
+          <h6 class="text-lg font-semibold mb-2">2105 McComas Way #300, VA 23456, USA</h6>
+          <h2 class="text-2xl font-bold mb-2">+1 (209) 813-0701</h2>
+          <br><p class="leading-relaxed mb-4">logisticargos1@gmail.com</p>
+          <br><a class="btn btn-white text-white px-6 py-3 rounded-md border-2 border-white hover:bg-white hover:text-gray-900 transition duration-300" href="#">Get Directions on the Map</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  
+<!-- Footer Section -->
+<footer class="bg-blue-900 text-white py-10 mt-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- How To Find Us -->
+        <div>
+          <h6 class="text-xl font-semibold mb-4">How To Find Us</h6>
+          <ul class="space-y-4">
+            <li class="flex items-start">
+              <i class="fas fa-sign text-lg mr-3 mt-1"></i>
+              <div>
+                <span>2105 McComas Way #300,</span>
+                <p class="mb-0">Virginia Beach, VA 23456, USA</p>
+              </div>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-headphones-alt text-lg mr-3 mt-1"></i>
+              <div>
+                <a href="https://wa.me/12098130701" target="_blank" class="flex items-center space-x-2">
+                    <i class="fab fa-whatsapp text-green-500"></i>
+                  <span>+237 657 765 765</span>
+                </a>
+                <p class="mb-0">Mon-Sat 8:30am-5:30pm</p>
+              </div>
+            </li>
+            <li class="flex items-start">
+              <i class="far fa-envelope text-lg mr-3 mt-1"></i>
+              <div>
+                <span>logisticargos1@gmail.com</span>
+                <p class="mb-0">24 X 7 online support</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+  
+        <!-- Call Center -->
+        <div>
+          <h6 class="text-xl font-semibold mb-4">Call Center</h6>
+          <div>
+            <h2 class="text-2xl font-bold">+1 (209) 813-0701</h2>
+            <h3 class="text-md">and get a free estimate</h3>
+          </div>
+        </div>
+  
+        <!-- Newsletter -->
+        <div class="md:col-span-2">
+          <h3 class="text-xl font-semibold mb-2">Signup for our newsletter</h3>
+          <p class="mb-4">Sign up to our newsletter to get the latest news and offers.</p>
+          <form class="flex flex-col sm:flex-row items-center gap-4" action="email-list.php" method="post">
+            <input type="text" class="form-input w-full px-4 py-2 text-black" name="email" placeholder="Enter email">
+            <button type="submit" class="bg-white text-blue-900 hover:bg-blue-700 hover:text-white transition duration-300 px-4 py-2 rounded shadow">Subscribe Now</button>
+          </form>
+  
+          <div class="mt-8 grid grid-cols-2 md:grid-cols-3 gap-6">
+            <div>
+              <h5 class="font-semibold mb-3">Quick links</h5>
+              <ul class="space-y-2">
+                <li><a href="#" class="hover:underline">About Us</a></li>
+                <li><a href="track_page.html" class="hover:underline">Track Your Shipment</a></li>
+                <li><a href="contactus.html" class="hover:underline">Request A Quote</a></li>
+              </ul>
+            </div>
+            <div>
+              <h5 class="font-semibold mb-3">Services</h5>
+              <ul class="space-y-2">
+                <li><a href="services/airfreight.html" class="hover:underline">Air Freight</a></li>
+                <li><a href="services/exportnimport.html" class="hover:underline">Export & Import</a></li>
+                <li><a href="#" class="hover:underline">Transportation</a></li>
+              </ul>
+            </div>
+            <div>
+              <h5 class="font-semibold mb-3 invisible md:visible">&nbsp;</h5>
+              <ul class="space-y-2">
+                <li><a href="services/logistics.html" class="hover:underline">Consulting Services</a></li>
+                
+                <li><a href="services/roadfreight.html" class="hover:underline">Road Freight</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Bottom Footer -->
+      <div class="border-t border-white mt-10 pt-6">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <a href="index.php">
+            <img src="logo.png" alt="logo" class="h-12">
+          </a>
+          <p class="mt-4 md:mt-0 text-sm">©️ 2025 Logistic Cargo Express. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+    <script>
+      // Auto-close modal after user presses Enter
+      document.querySelector("#modal input").addEventListener("keypress", function (e) {
+        if (e.key === "Enter") {
+          document.getElementById("modal").style.display = "none";
+        }
+      });
+    </script>
+  </body>
+</html>

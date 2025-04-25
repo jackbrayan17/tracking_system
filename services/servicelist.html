@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Service List - Shipping Tracker</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+<style>
+  .service-box {
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  border-radius: 12px;
+}
+
+.service-box:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 1.5rem 2rem rgba(0, 0, 0, 0.1);
+}
+
+.service-icon {
+  position: absolute;
+  top: -24px;
+  left: 16px;
+  padding: 10px;
+  font-size: 24px;
+  border-radius: 50%;
+  box-shadow: 0 0.3rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+    /* Set the width of the container */
+.slider-logo {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ensure the slider track stays in a row */
+.slider-track-logo {
+  display: flex;
+  animation: slide-left 10s linear infinite;
+}
+
+/* Animation for sliding the logos to the left */
+@keyframes slide-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* Optional: Adjust the spacing between logos */
+.slide-logo {
+  margin-right: 20px;
+}
+
+    </style>
+
+  </head>
+  <body class="font-sans bg-gray-100">
+    <!-- Modal -->
+    <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+      <div class="bg-white p-6 rounded shadow-lg w-96 relative">
+        <button onclick="document.getElementById('modal').style.display='none'" class="absolute top-2 right-2 text-gray-500 hover:text-red-600 text-lg font-bold">
+          &times;
+        </button>
+        <h2 class="text-xl font-bold mb-4 text-center">Track Shipping</h2>
+        <input
+          type="text"
+          placeholder="Enter Tracking Code"
+          class="w-full border border-gray-300 px-4 py-2 rounded mb-4"
+        />
+        <button
+          onclick="window.location.href='/track'"
+          class="w-full bg-red-600 text-white py-2 rounded hover:bg-red-700"
+        >Track</button>
+      </div>
+    </div>
+
+    <!-- Top Navbar (Dark Blue) -->
+    <div class="bg-blue-900 text-white text-sm py-1 px-4 flex justify-between items-center">
+      <div>Track your shipment Anytime Anywhere</div>
+      <div class="flex items-center space-x-4">
+        <span>+237 657 765 765</span>
+        <i class="fab fa-facebook"></i>
+        <i class="fab fa-instagram"></i>
+        <i class="fab fa-linkedin"></i>
+        <i class="fab fa-dropbox"></i>
+        <i class="fab fa-whatsapp"></i> 
+        
+      </div>
+    </div>
+
+    <!-- Red Navbar -->
+    <div class="bg-red-600 text-white px-6 py-6 flex items-center justify-between">
+        <div class="flex items-center space-x-4">
+          <img src="../logo.png" alt="Logo" class="h-12 w-auto" />
+          <!-- <span class="text-3xl font-bold">LOGO</span> -->
+        </div>
+        <div class="flex space-x-6 items-center text-lg">
+          <a href="../index.html" class="hover:text-gray-300">Home</a>
+          <a href="../aboutus.html" class="hover:text-gray-300">About Us</a>
+          <a href="../insurance.html" class="hover:text-gray-300">Insurance</a>
+          <a href="../stamp.html" class="hover:text-gray-300">Restricted Stamps</a>
+          <a href="../track_page.html" class="hover:text-gray-300">Track your shipment</a>
+          <a href="../contactus.html" class="hover:text-gray-300">Contact Us</a>
+          <div class="relative group">
+            <button class="hover:text-gray-300">Services</button>
+            <div class="absolute hidden group-hover:block bg-white text-black mt-2 py-2 w-48 shadow-xl z-40">
+              <a href="servicelist.html" class="block px-4 py-2 hover:bg-gray-100">Service List</a>
+              <a href="airfreight.html" class="block px-4 py-2 hover:bg-gray-100">Air Freight</a>
+              <a href="oceanfreight.html" class="block px-4 py-2 hover:bg-gray-100">Ocean Freight</a>
+              <a href="exportnimport.html" class="block px-4 py-2 hover:bg-gray-100">Export & Import</a>
+              <a href="roadfreight.html" class="block px-4 py-2 hover:bg-gray-100">Road Freight</a>
+              <a href="logistics.html" class="block px-4 py-2 hover:bg-gray-100">Logistics</a>
+            </div>
+          </div>
+          <a href="#" class="border border-white px-4 py-2 rounded hover:bg-white hover:text-red-600 transition">Get a quote</a>
+        </div>
+      </div>
+      <section class="relative bg-cover bg-center bg-no-repeat bg-overlay-dark-50 py-24" style="background-image: url('../img/image4.jpg');">
+        <div class="container mx-auto px-4">
+          <div class="max-w-2xl">
+            <h1 class="text-blue-900 text-5xl md:text-6xl font-bold mb-4">Services</h1>
+            <!-- <p class="text-blue-900 text-lg leading-relaxed">
+              For those of you who are serious about having more, doing more, giving more and being more — success is achievable.
+              <br class="hidden md:block" />
+              Let’s be part of your success story today. Let’s deliver it for you — <strong>fast and safe</strong>.
+            </p> -->
+          </div>
+        </div>
+      </section>
+      <section class="py-2 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <nav class="text-sm text-gray-700" aria-label="Breadcrumb">
+            <ol class="list-reset flex space-x-2">
+              <li>
+                <a href="../index.html" class="text-blue-600 hover:underline flex items-center">
+                  <i class="fas fa-home mr-1"></i>Home
+                </a>
+              </li>
+              <li><span class="mx-2 text-gray-500">/</span></li>
+              <li class="text-gray-500">Services</li>
+            </ol>
+          </nav>
+        </div>
+      </section>
+
+      <section class="space-ptb bg-light">
+    <div class="container">
+  
+        <!-- Section Header -->
+        <div class="row justify-content-center text-center mb-5">
+            <div class="col-md-10">
+                <h2 class="font-weight-bold">Logistic Cargo Express Delivery Limited</h2>
+                <p class="text-muted">
+                    In a world that never waits, time flies and dreams linger...  
+                    What will your story be in ten years if you stay still?  
+                    Change begins with a single step — move with purpose, deliver with passion.
+                </p>
+            </div>
+        </div>
+  
+        <!-- Services Grid -->
+        <div class="row gy-4">
+            
+            <!-- Air Freight -->
+            <div class="col-sm-6 col-xl-3">
+                <div class="card h-100 shadow-sm border-0 service-box">
+                    <img src="../img/air.jpg" class="img-fluid rounded-top" alt="Air Freight">
+                    <div class="p-4">
+                        <h5><a href="airfreight.html" class="text-dark">Air Freight</a></h5>
+                        <p class="text-muted">Swift skies, seamless collection — your cargo’s fastest route.</p>
+                    </div>
+                </div>
+            </div>
+  
+            <!-- Ocean Freight -->
+            <div class="col-sm-6 col-xl-3">
+                <div class="card h-100 shadow-sm border-0 service-box">
+                    <img src="../img/ocean.jpg" class="img-fluid rounded-top" alt="Ocean Freight">
+                    <div class="p-4">
+                        <h5><a href="oceanfreight.html" class="text-dark">Ocean Freight</a></h5>
+                        <p class="text-muted">Navigate the globe — we align your shipment with your mission.</p>
+                    </div>
+                </div>
+            </div>
+  
+            <!-- Export & Import -->
+            <div class="col-sm-6 col-xl-3">
+                <div class="card h-100 shadow-sm border-0 service-box">
+                    <img src="../img/bus.jpg" class="img-fluid rounded-top" alt="Export & Import">
+                    <div class="p-4">
+                        <h5><a href="exportnimport.html" class="text-dark">Export & Import</a></h5>
+                        <p class="text-muted">Bridging borders — your access to global commerce.</p>
+                    </div>
+                </div>
+            </div>
+  
+            <!-- Road Freight -->
+            <div class="col-sm-6 col-xl-3">
+                <div class="card h-100 shadow-sm border-0 service-box">
+                    <img src="../img/road.jpg" class="img-fluid rounded-top" alt="Road Freight">
+                    <div class="p-4">
+                        <h5><a href="roadfreight.html" class="text-dark">Road Freight</a></h5>
+                        <p class="text-muted">Grounded in reliability — we deliver across every mile.</p>
+                    </div>
+                </div>
+            </div>
+  
+            <!-- Transportation -->
+            <div class="col-sm-6 col-xl-3">
+                <div class="card h-100 shadow-sm border-0 service-box">
+                    <img src="../img/trans.jpg" class="img-fluid rounded-top" alt="Transportation">
+                    <div class="p-4">
+                        <h5><a href="#" class="text-dark">Transportation</a></h5>
+                        <p class="text-muted">Every shipment handled with care and precision.</p>
+                    </div>
+                </div>
+            </div>
+  
+            <!-- Forwarding -->
+            <div class="col-sm-6 col-xl-3">
+                <div class="card h-100 shadow-sm border-0 service-box">
+                    <img src="../img/forwarding.jpg" class="img-fluid rounded-top" alt="Forwarding">
+                    <div class="p-4">
+                        <h5><a href="#" class="text-dark">Forwarding</a></h5>
+                        <p class="text-muted">Smart routes, on-time deliveries — no compromises.</p>
+                    </div>
+                </div>
+            </div>
+  
+            <!-- Consulting -->
+            <div class="col-sm-6 col-xl-3">
+                <div class="card h-100 shadow-sm border-0 service-box">
+                    <img src="../img/consulting.jpg" class="img-fluid rounded-top" alt="Consulting">
+                    <div class="p-4">
+                        <h5><a href="#" class="text-dark">Consulting</a></h5>
+                        <p class="text-muted">Expert minds steering your supply chain strategy forward.</p>
+                    </div>
+                </div>
+            </div>
+  
+            <!-- Local Moving -->
+            <div class="col-sm-6 col-xl-3">
+                <div class="card h-100 shadow-sm border-0 service-box">
+                    <img src="../img/localmoves.jpg" class="img-fluid rounded-top" alt="Local Moving">
+                    <div class="p-4">
+                        <h5><a href="#" class="text-dark">Local Moving</a></h5>
+                        <p class="text-muted">From A to B with grace — smooth, secure, stress-free.</p>
+                    </div>
+                </div>
+            </div>
+  
+        </div>
+    </div>
+</section>
+
+      <br><br>
+      <section id="quote-section" class="py-5 bg-light bg-holder">
+        <div class="container">
+          <div class="row align-items-start">
+            
+            <!-- Dark Blue Quote Card -->
+            <div class="col-lg-6 mb-5 mb-lg-0">
+              <div class="card bg-dark text-white shadow-lg rounded-4 p-4">
+                <div class="card-body">
+                  <h2 class="mb-2 fw-bold text-white">🚀 Quick Quote Request</h2>
+                  <p class="mb-4 text-light">Let’s get you moving. Fill in your details — we’ll handle the heavy lifting.</p>
+                  
+                  <form action="contact.php" method="post">
+                    <div class="row g-3">
+                      <div class="col-md-6">
+                        <input type="text" class="form-control form-control-lg bg-light text-dark" placeholder="Your name" name="name" required>
+                      </div>
+                      <div class="col-md-6">
+                        <input type="text" class="form-control form-control-lg bg-light text-dark" placeholder="Subject" name="subject" required>
+                      </div>
+                      <div class="col-md-6">
+                        <input type="email" class="form-control form-control-lg bg-light text-dark" placeholder="Your email" name="email" required>
+                      </div>
+                      <div class="col-md-6">
+                        <input type="text" class="form-control form-control-lg bg-light text-dark" placeholder="Phone" name="phone" required>
+                      </div>
+                      <div class="col-12">
+                        <textarea class="form-control form-control-lg bg-light text-dark" placeholder="Your message" rows="5" name="message" required></textarea>
+                      </div>
+                      <div class="col-12">
+                        <button type="submit" class="btn btn-warning w-100 fw-bold py-2">
+                          Send Message <i class="fas fa-paper-plane ms-2"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+      
+                </div>
+              </div>
+            </div>
+      
+            <!-- Shipping Steps -->
+            <div class="col-lg-6">
+              <h2 class="mb-4 fw-bold text-dark">📦 Steps to Ship Products Worldwide</h2>
+      
+              <div class="mb-4">
+                <h5 class="fw-semibold text-primary">1. Packaging</h5>
+                <p class="text-muted">We package your goods in a secure, storage-optimized manner to preserve them for the journey.</p>
+              </div>
+      
+              <div class="mb-4">
+                <h5 class="fw-semibold text-primary">2. Courier Handover</h5>
+                <p class="text-muted">Your package is then handed to our trusted logistics network — whether by air, sea, or land.</p>
+              </div>
+      
+              <div class="mb-4">
+                <h5 class="fw-semibold text-primary">3. Real-time Tracking</h5>
+                <p class="text-muted">Track your shipment any time, anywhere. <a href="track-your-shipment.html" class="text-decoration-underline text-dark fw-bold">Click here</a> to follow your package.</p>
+              </div>
+            </div>
+      
+          </div>
+        </div>
+      </section>
+      
+      
+
+
+
+      
+<!-- Footer Section -->
+<footer class="bg-blue-900 text-white py-10 mt-10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <!-- How To Find Us -->
+      <div>
+        <h6 class="text-xl font-semibold mb-4">How To Find Us</h6>
+        <ul class="space-y-4">
+          <li class="flex items-start">
+            <i class="fas fa-sign text-lg mr-3 mt-1"></i>
+            <div>
+              <span>2105 McComas Way #300,</span>
+              <p class="mb-0">Virginia Beach, VA 23456, USA</p>
+            </div>
+          </li>
+          <li class="flex items-start">
+            <i class="fas fa-headphones-alt text-lg mr-3 mt-1"></i>
+            <div>
+              <a href="https://wa.me/12098130701" target="_blank" class="flex items-center space-x-2">
+                  <i class="fab fa-whatsapp text-green-500"></i>
+                <span>+237 657 765 765</span>
+              </a>
+              <p class="mb-0">Mon-Sat 8:30am-5:30pm</p>
+            </div>
+          </li>
+          <li class="flex items-start">
+            <i class="far fa-envelope text-lg mr-3 mt-1"></i>
+            <div>
+              <span>logisticargos1@gmail.com</span>
+              <p class="mb-0">24 X 7 online support</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Call Center -->
+      <div>
+        <h6 class="text-xl font-semibold mb-4">Call Center</h6>
+        <div>
+          <h2 class="text-2xl font-bold">+1 (209) 813-0701</h2>
+          <h3 class="text-md">and get a free estimate</h3>
+        </div>
+      </div>
+
+      <!-- Newsletter -->
+      <div class="md:col-span-2">
+        <h3 class="text-xl font-semibold mb-2">Signup for our newsletter</h3>
+        <p class="mb-4">Sign up to our newsletter to get the latest news and offers.</p>
+        <form class="flex flex-col sm:flex-row items-center gap-4" action="email-list.php" method="post">
+          <input type="text" class="form-input w-full px-4 py-2 text-black" name="email" placeholder="Enter email">
+          <button type="submit" class="bg-white text-blue-900 hover:bg-blue-700 hover:text-white transition duration-300 px-4 py-2 rounded shadow">Subscribe Now</button>
+        </form>
+
+        <div class="mt-8 grid grid-cols-2 md:grid-cols-3 gap-6">
+          <div>
+            <h5 class="font-semibold mb-3">Quick links</h5>
+            <ul class="space-y-2">
+              <li><a href="#" class="hover:underline">About Us</a></li>
+              <li><a href="../track_page.html" class="hover:underline">Track Your Shipment</a></li>
+              <li><a href="../contactus.html" class="hover:underline">Request A Quote</a></li>
+            </ul>
+          </div>
+          <div>
+            <h5 class="font-semibold mb-3">Services</h5>
+            <ul class="space-y-2">
+              <li><a href="airfreight.html" class="hover:underline">Air Freight</a></li>
+              <li><a href="exportnimport.html" class="hover:underline">Export & Import</a></li>
+              <li><a href="#" class="hover:underline">Transportation</a></li>
+            </ul>
+          </div>
+          <div>
+            <h5 class="font-semibold mb-3 invisible md:visible">&nbsp;</h5>
+            <ul class="space-y-2">
+              <li><a href="logistics.html" class="hover:underline">Consulting Services</a></li>
+              
+              <li><a href="roadfreight.html" class="hover:underline">Road Freight</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Footer -->
+    <div class="border-t border-white mt-10 pt-6">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <a href="../index.html">
+          <img src="../logo.png" alt="logo" class="h-12">
+        </a>
+        <p class="mt-4 md:mt-0 text-sm">©️ 2025 Logistic Cargo Express. All rights reserved.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+    <script>
+      // Auto-close modal after user presses Enter
+      document.querySelector("#modal input").addEventListener("keypress", function (e) {
+        if (e.key === "Enter") {
+          document.getElementById("modal").style.display = "none";
+        }
+      });
+    </script>
+  </body>
+</html>

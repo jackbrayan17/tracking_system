@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stamp - Shipping Tracker</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+<style>
+    /* Set the width of the container */
+.slider-logo {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ensure the slider track stays in a row */
+.slider-track-logo {
+  display: flex;
+  animation: slide-left 10s linear infinite;
+}
+
+/* Animation for sliding the logos to the left */
+@keyframes slide-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* Optional: Adjust the spacing between logos */
+.slide-logo {
+  margin-right: 20px;
+}
+
+    </style>
+
+  </head>
+  <body class="font-sans bg-gray-100">
+    <!-- Modal -->
+    <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+      <div class="bg-white p-6 rounded shadow-lg w-96 relative">
+        <button onclick="document.getElementById('modal').style.display='none'" class="absolute top-2 right-2 text-gray-500 hover:text-red-600 text-lg font-bold">
+          &times;
+        </button>
+        <h2 class="text-xl font-bold mb-4 text-center">Track Shipping</h2>
+        <input
+          type="text"
+          placeholder="Enter Tracking Code"
+          class="w-full border border-gray-300 px-4 py-2 rounded mb-4"
+        />
+        <button
+          onclick="window.location.href='/track'"
+          class="w-full bg-red-600 text-white py-2 rounded hover:bg-red-700"
+        >Track</button>
+      </div>
+    </div>
+
+    <!-- Top Navbar (Dark Blue) -->
+    <div class="bg-blue-900 text-white text-sm py-1 px-4 flex justify-between items-center">
+      <div>Track your shipment Anytime Anywhere</div>
+      <div class="flex items-center space-x-4">
+        <span>+237 657 765 765</span>
+        <i class="fab fa-facebook"></i>
+        <i class="fab fa-instagram"></i>
+        <i class="fab fa-linkedin"></i>
+        <i class="fab fa-dropbox"></i>
+        <i class="fab fa-whatsapp"></i> 
+        
+      </div>
+    </div>
+
+    <!-- Red Navbar -->
+    <div class="bg-red-600 text-white px-6 py-6 flex items-center justify-between">
+        <div class="flex items-center space-x-4">
+          <img src="logo.png" alt="Logo" class="h-12 w-auto" />
+          <!-- <span class="text-3xl font-bold">LOGO</span> -->
+        </div>
+        <div class="flex space-x-6 items-center text-lg">
+          <a href="#" class="hover:text-gray-300">Home</a>
+          <a href="aboutus.html" class="hover:text-gray-300">About Us</a>
+          <a href="insurance.html" class="hover:text-gray-300">Insurance</a>
+          <a href="stamp.html" class="hover:text-gray-300">Restricted Stamps</a>
+          <a href="track_page.html" class="hover:text-gray-300">Track your shipment</a>
+          <a href="contactus.html" class="hover:text-gray-300">Contact Us</a>
+          <div class="relative group">
+            <button class="hover:text-gray-300">Services</button>
+            <div class="absolute hidden group-hover:block bg-white text-black mt-2 py-2 w-48 shadow-xl z-40">
+              <a href="services/servicelist.html" class="block px-4 py-2 hover:bg-gray-100">Service List</a>
+              <a href="services/airfreight.html" class="block px-4 py-2 hover:bg-gray-100">Air Freight</a>
+              <a href="services/oceanfreight.html" class="block px-4 py-2 hover:bg-gray-100">Ocean Freight</a>
+              <a href="services/exportnimport.html" class="block px-4 py-2 hover:bg-gray-100">Export & Import</a>
+              <a href="services/roadfreight.html" class="block px-4 py-2 hover:bg-gray-100">Road Freight</a>
+              <a href="services/logistics.html" class="block px-4 py-2 hover:bg-gray-100">Logistics</a>
+            </div>
+          </div>
+          <a href="#" class="border border-white px-4 py-2 rounded hover:bg-white hover:text-red-600 transition">Get a quote</a>
+        </div>
+      </div>
+
+
+      <section class="relative bg-cover bg-center bg-no-repeat bg-overlay-dark-50 py-24" style="background-image: url('img/handshake.jpg');">
+        <div class="container mx-auto px-4">
+          <div class="max-w-2xl">
+            <h1 class="text-blue-900 text-5xl md:text-6xl font-bold mb-4">Restricted Stamps</h1>
+            <!-- <p class="text-blue-900 text-lg leading-relaxed">
+              For those of you who are serious about having more, doing more, giving more and being more — success is achievable.
+              <br class="hidden md:block" />
+              Let’s be part of your success story today. Let’s deliver it for you — <strong>fast and safe</strong>.
+            </p> -->
+          </div>
+        </div>
+      </section>
+
+      <section class="py-2 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <nav class="text-sm text-gray-700" aria-label="Breadcrumb">
+            <ol class="list-reset flex space-x-2">
+              <li>
+                <a href="index.html" class="text-blue-600 hover:underline flex items-center">
+                  <i class="fas fa-home mr-1"></i>Home
+                </a>
+              </li>
+              <li><span class="mx-2 text-gray-500">/</span></li>
+              <li class="text-gray-500">Restricted Stamps</li>
+            </ol>
+          </nav>
+        </div>
+      </section>
+      <div class="row">
+        <div class="col-xl-6 col-sm-4 col-xl-6">
+          <div class="card">
+            <img src="img/stamp-1.jpg" class="card-img-top img-fluid w-100" alt="Restricted Stamp">
+            <div class="card-body">
+              <h2 class="font-weight-bold card-title">
+                <i class="fas fa-stamp"></i> What are Restricted Stamps?
+              </h2>
+              <p class="card-text">
+                Restricted stamps, also known as “limited edition” or “special issue” stamps, refer to a specific category of postage stamps that are produced and issued by postal authorities for a limited time or in a limited quantity. These stamps are often designed to commemorate a particular event, person, or theme, and are highly sought after by collectors and philatelists.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-11 mt-5">
+          <h2 class="font-weight-bold">The Main Characteristics Of Restricted Stamps</h2>
+          <div class="row">
+            <div class="col-md-6 col-lg-4 mb-4">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title"><i class="fas fa-gem"></i> Limited Availability</h5>
+                  <p class="card-text">
+                    These stamps are typically issued in a small number of prints, making them scarce and valuable. The limited availability can be due to the production run being intentionally small or because the stamps were not sold well initially and were withdrawn from circulation.
+                  </p>
+                </div>
+              </div>
+            </div>
+      
+            <div class="col-md-6 col-lg-4 mb-4">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title"><i class="fas fa-crown"></i> Commemorative Purpose</h5>
+                  <p class="card-text">
+                    Restricted stamps are often created to celebrate a specific event, person, or theme. Examples include anniversaries, historical figures, cultural milestones, or natural phenomena. These stamps serve as a way to honor and preserve the memory of these events or subjects.
+                  </p>
+                </div>
+              </div>
+            </div>
+      
+            <div class="col-md-6 col-lg-4 mb-4">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title"><i class="fas fa-paint-brush"></i> Design and Artistry</h5>
+                  <p class="card-text">
+                    Restricted stamps often feature unique and intricate designs, showcasing the artistic talents of the designers and engravers. The stamps may also incorporate advanced printing techniques or materials, further enhancing their collectibility.
+                  </p>
+                </div>
+              </div>
+            </div>
+      
+            <div class="col-md-6 col-lg-4 mb-4">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title"><i class="fas fa-clipboard-list"></i> Collectibility</h5>
+                  <p class="card-text">
+                    Due to their limited availability and commemorative nature, restricted stamps are highly sought after by collectors and philatelists. As a result, their value can increase over time, making them a popular investment option for stamp enthusiasts.
+                  </p>
+                </div>
+              </div>
+            </div>
+      
+            <div class="col-md-6 col-lg-4 mb-4">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title"><i class="fas fa-balance-scale"></i> Legal Tender</h5>
+                  <p class="card-text">
+                    Like regular postage stamps, restricted stamps are legally valid for use in postal services. However, their limited availability and collectible nature often lead to their use being discouraged or restricted by postal authorities to preserve their value and collectibility.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-11 mt-5">
+           <h2 class="font-weight-bold"> &nbsp;&nbsp;ADVANTAGES OF RESTRICTED STAMPS</h2>
+           <center><div class="row">
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fas fa-shield-alt"></i> Protection of Intellectual Property</h5>
+                            <p class="card-text">
+                                Restricted stamps help protect the intellectual property rights of creators, inventors, and businesses by limiting the use of their work or products. This ensures that their creations are not misused, copied, or distributed without their consent.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fas fa-check-circle"></i> Quality Control</h5>
+                            <p class="card-text">
+                                Restricted stamps can be used to maintain quality control in various industries, such as pharmaceuticals, food, and cosmetics. By restricting the use of stamps to authorized personnel, it becomes easier to monitor and maintain the quality of products throughout the supply chain.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div></center>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-3 mx-auto mt-3">
+            <div class="card">
+                <img src="img/custom-stamp.jpg" class="card-img-top img-fluid w-100" alt="Custom Stamp">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-image"></i> Custom Stamp Example</h5>
+                    <p class="card-text">A custom restricted stamp designed for a specific purpose, showcasing the importance of quality control and intellectual property protection.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+      
+<!-- Footer Section -->
+<footer class="bg-blue-900 text-white py-10 mt-10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <!-- How To Find Us -->
+      <div>
+        <h6 class="text-xl font-semibold mb-4">How To Find Us</h6>
+        <ul class="space-y-4">
+          <li class="flex items-start">
+            <i class="fas fa-sign text-lg mr-3 mt-1"></i>
+            <div>
+              <span>2105 McComas Way #300,</span>
+              <p class="mb-0">Virginia Beach, VA 23456, USA</p>
+            </div>
+          </li>
+          <li class="flex items-start">
+            <i class="fas fa-headphones-alt text-lg mr-3 mt-1"></i>
+            <div>
+              <a href="https://wa.me/12098130701" target="_blank" class="flex items-center space-x-2">
+                  <i class="fab fa-whatsapp text-green-500"></i>
+                <span>+237 657 765 765</span>
+              </a>
+              <p class="mb-0">Mon-Sat 8:30am-5:30pm</p>
+            </div>
+          </li>
+          <li class="flex items-start">
+            <i class="far fa-envelope text-lg mr-3 mt-1"></i>
+            <div>
+              <span>logisticargos1@gmail.com</span>
+              <p class="mb-0">24 X 7 online support</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Call Center -->
+      <div>
+        <h6 class="text-xl font-semibold mb-4">Call Center</h6>
+        <div>
+          <h2 class="text-2xl font-bold">+1 (209) 813-0701</h2>
+          <h3 class="text-md">and get a free estimate</h3>
+        </div>
+      </div>
+
+      <!-- Newsletter -->
+      <div class="md:col-span-2">
+        <h3 class="text-xl font-semibold mb-2">Signup for our newsletter</h3>
+        <p class="mb-4">Sign up to our newsletter to get the latest news and offers.</p>
+        <form class="flex flex-col sm:flex-row items-center gap-4" action="email-list.php" method="post">
+          <input type="text" class="form-input w-full px-4 py-2 text-black" name="email" placeholder="Enter email">
+          <button type="submit" class="bg-white text-blue-900 hover:bg-blue-700 hover:text-white transition duration-300 px-4 py-2 rounded shadow">Subscribe Now</button>
+        </form>
+
+        <div class="mt-8 grid grid-cols-2 md:grid-cols-3 gap-6">
+          <div>
+            <h5 class="font-semibold mb-3">Quick links</h5>
+            <ul class="space-y-2">
+              <li><a href="#" class="hover:underline">About Us</a></li>
+              <li><a href="track_page.html" class="hover:underline">Track Your Shipment</a></li>
+              <li><a href="contactus.html" class="hover:underline">Request A Quote</a></li>
+            </ul>
+          </div>
+          <div>
+            <h5 class="font-semibold mb-3">Services</h5>
+            <ul class="space-y-2">
+              <li><a href="services/airfreight.html" class="hover:underline">Air Freight</a></li>
+              <li><a href="services/exportnimport.html" class="hover:underline">Export & Import</a></li>
+              <li><a href="#" class="hover:underline">Transportation</a></li>
+            </ul>
+          </div>
+          <div>
+            <h5 class="font-semibold mb-3 invisible md:visible">&nbsp;</h5>
+            <ul class="space-y-2">
+              <li><a href="services/logistics.html" class="hover:underline">Consulting Services</a></li>
+              
+              <li><a href="services/roadfreight.html" class="hover:underline">Road Freight</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Footer -->
+    <div class="border-t border-white mt-10 pt-6">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <a href="index.php">
+          <img src="logo.png" alt="logo" class="h-12">
+        </a>
+        <p class="mt-4 md:mt-0 text-sm">©️ 2025 Logistic Cargo Express. All rights reserved.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+    <script>
+      // Auto-close modal after user presses Enter
+      document.querySelector("#modal input").addEventListener("keypress", function (e) {
+        if (e.key === "Enter") {
+          document.getElementById("modal").style.display = "none";
+        }
+      });
+    </script>
+  </body>
+</html>
