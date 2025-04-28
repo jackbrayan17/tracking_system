@@ -80,32 +80,72 @@
     </div>
 
     <!-- Red Navbar -->
-    <div class="bg-red-600 text-white px-6 py-6 flex items-center justify-between">
-        <div class="flex items-center space-x-4">
-          <img src="../logo.png" alt="Logo" class="h-12 w-auto" />
-          <!-- <span class="text-3xl font-bold">LOGO</span> -->
-        </div>
-        <div class="flex space-x-6 items-center text-lg">
-          <a href="../index.html" class="hover:text-gray-300">Home</a>
-          <a href="../aboutus.html" class="hover:text-gray-300">About Us</a>
-          <a href="../insurance.html" class="hover:text-gray-300">Insurance</a>
-          <a href="../stamp.html" class="hover:text-gray-300">Restricted Stamps</a>
-          <a href="../track_page.html" class="hover:text-gray-300">Track your shipment</a>
-          <a href="../contactus.html" class="hover:text-gray-300">Contact Us</a>
-          <div class="relative group">
-            <button class="hover:text-gray-300">Services</button>
-            <div class="absolute hidden group-hover:block bg-white text-black mt-2 py-2 w-48 shadow-xl z-40">
-              <a href="servicelist.html" class="block px-4 py-2 hover:bg-gray-100">Service List</a>
-              <a href="airfreight.html" class="block px-4 py-2 hover:bg-gray-100">Air Freight</a>
-              <a href="oceanfreight.html" class="block px-4 py-2 hover:bg-gray-100">Ocean Freight</a>
-              <a href="exportnimport.html" class="block px-4 py-2 hover:bg-gray-100">Export & Import</a>
-              <a href="roadfreight.html" class="block px-4 py-2 hover:bg-gray-100">Road Freight</a>
-              <a href="logistics.html" class="block px-4 py-2 hover:bg-gray-100">Logistics</a>
-            </div>
+    <div class="bg-red-600 text-white px-6 py-6 flex items-center justify-between relative">
+      <div class="flex items-center space-x-4">
+        <img src="../logo.png" alt="Logo" class="h-12 w-auto" />
+      </div>
+    
+      <!-- Hamburger Icon -->
+      <div class="md:hidden">
+        <button id="menu-btn" class="text-white text-3xl focus:outline-none">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    
+      <!-- Desktop Nav Links -->
+      <div id="menu" class="hidden md:flex space-x-6 items-center text-lg">
+        <a href="../index.html" class="hover:text-gray-300">Home</a>
+        <a href="../aboutus.html" class="hover:text-gray-300">About Us</a>
+        <a href="../insurance.html" class="hover:text-gray-300">Insurance</a>
+        <a href="../stamp.html" class="hover:text-gray-300">Restricted Stamps</a>
+        <a href="../track_page.html" class="hover:text-gray-300">Track your shipment</a>
+        <a href="../contactus.html" class="hover:text-gray-300">Contact Us</a>
+        <div class="relative group">
+          <button class="hover:text-gray-300">Services</button>
+          <div class="absolute hidden group-hover:block bg-white text-black mt-2 py-2 w-48 shadow-xl z-40">
+            <a href="servicelist.html" class="block px-4 py-2 hover:bg-gray-100">Service List</a>
+            <a href="airfreight.html" class="block px-4 py-2 hover:bg-gray-100">Air Freight</a>
+            <a href="oceanfreight.html" class="block px-4 py-2 hover:bg-gray-100">Ocean Freight</a>
+            <a href="exportnimport.html" class="block px-4 py-2 hover:bg-gray-100">Export & Import</a>
+            <a href="roadfreight.html" class="block px-4 py-2 hover:bg-gray-100">Road Freight</a>
+            <a href="logistics.html" class="block px-4 py-2 hover:bg-gray-100">Logistics</a>
           </div>
-          <a href="#" class="border border-white px-4 py-2 rounded hover:bg-white hover:text-red-600 transition">Get a quote</a>
+        </div>
+        <a href="#" class="border border-white px-4 py-2 rounded hover:bg-white hover:text-red-600 transition">Get a quote</a>
+      </div>
+    </div>
+    
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-red-600 bg-opacity-50 backdrop-blur-sm text-white px-6 py-4 space-y-3 flex flex-col text-lg">
+      <a href="../index.html" class="hover:text-gray-300">Home</a>
+      <a href="../aboutus.html" class="hover:text-gray-300">About Us</a>
+      <a href="../insurance.html" class="hover:text-gray-300">Insurance</a>
+      <a href="../stamp.html" class="hover:text-gray-300">Restricted Stamps</a>
+      <a href="../track_page.html" class="hover:text-gray-300">Track your shipment</a>
+      <a href="../contactus.html" class="hover:text-gray-300">Contact Us</a>
+      <div>
+        <span class="block font-semibold">Services</span>
+        <div class="pl-4 space-y-2">
+          <a href="servicelist.html" class="block hover:text-gray-300">Service List</a>
+          <a href="airfreight.html" class="block hover:text-gray-300">Air Freight</a>
+          <a href="oceanfreight.html" class="block hover:text-gray-300">Ocean Freight</a>
+          <a href="exportnimport.html" class="block hover:text-gray-300">Export & Import</a>
+          <a href="roadfreight.html" class="block hover:text-gray-300">Road Freight</a>
+          <a href="logistics.html" class="block hover:text-gray-300">Logistics</a>
         </div>
       </div>
+      <a href="#" class="border border-white px-4 py-2 rounded hover:bg-white hover:text-red-600 transition">Get a quote</a>
+    </div>
+    
+    <script>
+      const menuBtn = document.getElementById('menu-btn');
+      const menu = document.getElementById('mobile-menu');
+    
+      menuBtn.addEventListener('click', () => {
+        menu.classList.toggle('hidden');
+      });
+    </script>
+    
 
       <section class="relative bg-cover bg-center bg-no-repeat bg-overlay-dark-50 py-24" style="background-image: url('../img/airfreight.jpg');">
         <div class="container mx-auto px-4">

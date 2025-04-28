@@ -76,32 +76,74 @@
     </div>
 
     <!-- Red Navbar -->
-    <div class="bg-red-600 text-white px-6 py-6 flex items-center justify-between">
-        <div class="flex items-center space-x-4">
-          <img src="logo.png" alt="Logo" class="h-12 w-auto" />
-          <!-- <span class="text-3xl font-bold">LOGO</span> -->
-        </div>
-        <div class="flex space-x-6 items-center text-lg">
-          <a href="#" class="hover:text-gray-300">Home</a>
-          <a href="aboutus.html" class="hover:text-gray-300">About Us</a>
-          <a href="insurance.html" class="hover:text-gray-300">Insurance</a>
-          <a href="stamp.html" class="hover:text-gray-300">Restricted Stamps</a>
-          <a href="track_page.html" class="hover:text-gray-300">Track your shipment</a>
-          <a href="contactus.html" class="hover:text-gray-300">Contact Us</a>
-          <div class="relative group">
-            <button class="hover:text-gray-300">Services</button>
-            <div class="absolute hidden group-hover:block bg-white text-black mt-2 py-2 w-48 shadow-xl z-40">
-              <a href="services/servicelist.html" class="block px-4 py-2 hover:bg-gray-100">Service List</a>
-              <a href="services/airfreight.html" class="block px-4 py-2 hover:bg-gray-100">Air Freight</a>
-              <a href="services/oceanfreight.html" class="block px-4 py-2 hover:bg-gray-100">Ocean Freight</a>
-              <a href="services/exportnimport.html" class="block px-4 py-2 hover:bg-gray-100">Export & Import</a>
-              <a href="services/roadfreight.html" class="block px-4 py-2 hover:bg-gray-100">Road Freight</a>
-              <a href="services/logistics.html" class="block px-4 py-2 hover:bg-gray-100">Logistics</a>
-            </div>
-          </div>
-          <a href="#" class="border border-white px-4 py-2 rounded hover:bg-white hover:text-red-600 transition">Get a quote</a>
-        </div>
+    <!-- Load Tailwind + AlpineJS -->
+<!-- Red Navbar -->
+<div class="bg-red-600 text-white px-6 py-6 flex items-center justify-between relative">
+  <div class="flex items-center space-x-4">
+    <img src="logo.png" alt="Logo" class="h-12 w-auto" />
+  </div>
+
+  <!-- Hamburger Icon -->
+  <div class="md:hidden">
+    <button id="menu-btn" class="text-white text-3xl focus:outline-none">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+
+  <!-- Nav Links -->
+  <div id="menu" class="hidden md:flex space-x-6 items-center text-lg">
+    <a href="#" class="hover:text-gray-300">Home</a>
+    <a href="aboutus.html" class="hover:text-gray-300">About Us</a>
+    <a href="insurance.html" class="hover:text-gray-300">Insurance</a>
+    <a href="stamp.html" class="hover:text-gray-300">Restricted Stamps</a>
+    <a href="tracks.html" class="hover:text-gray-300">Track Shipment</a>
+    <a href="contactus.html" class="hover:text-gray-300">Contact Us</a>
+    <div class="relative group">
+      <button class="hover:text-gray-300">Services</button>
+      <div class="absolute hidden group-hover:block bg-white text-black mt-2 py-2 w-48 shadow-xl z-40">
+        <a href="services/servicelist.html" class="block px-4 py-2 hover:bg-gray-100">Service List</a>
+        <a href="services/airfreight.html" class="block px-4 py-2 hover:bg-gray-100">Air Freight</a>
+        <a href="services/oceanfreight.html" class="block px-4 py-2 hover:bg-gray-100">Ocean Freight</a>
+        <a href="services/exportnimport.html" class="block px-4 py-2 hover:bg-gray-100">Export & Import</a>
+        <a href="services/roadfreight.html" class="block px-4 py-2 hover:bg-gray-100">Road Freight</a>
+        <a href="services/logistics.html" class="block px-4 py-2 hover:bg-gray-100">Logistics</a>
       </div>
+    </div>
+    <a href="#" class="border border-white px-4 py-2 rounded hover:bg-white hover:text-red-600 transition">Get a Quote</a>
+  </div>
+</div>
+
+<!-- Mobile Dropdown Menu -->
+<div id="mobile-menu" class="hidden md:hidden bg-red-600 bg-opacity-50 backdrop-blur-sm text-white px-6 py-4 space-y-3 flex flex-col text-lg">
+  <a href="#" class="hover:text-gray-300">Home</a>
+  <a href="aboutus.html" class="hover:text-gray-300">About Us</a>
+  <a href="insurance.html" class="hover:text-gray-300">Insurance</a>
+  <a href="stamp.html" class="hover:text-gray-300">Restricted Stamps</a>
+  <a href="track_page.html" class="hover:text-gray-300">Track Shipment</a>
+  <a href="contactus.html" class="hover:text-gray-300">Contact Us</a>
+  <div>
+    <span class="block font-semibold">Services</span>
+    <div class="pl-4 space-y-2">
+      <a href="services/servicelist.html" class="block hover:text-gray-300">Service List</a>
+      <a href="services/airfreight.html" class="block hover:text-gray-300">Air Freight</a>
+      <a href="services/oceanfreight.html" class="block hover:text-gray-300">Ocean Freight</a>
+      <a href="services/exportnimport.html" class="block hover:text-gray-300">Export & Import</a>
+      <a href="services/roadfreight.html" class="block hover:text-gray-300">Road Freight</a>
+      <a href="services/logistics.html" class="block hover:text-gray-300">Logistics</a>
+    </div>
+  </div>
+  <a href="#" class="border border-white px-4 py-2 rounded hover:bg-white hover:text-red-600 transition">Get a Quote</a>
+</div>
+
+<script>
+  const menuBtn = document.getElementById('menu-btn');
+  const menu = document.getElementById('mobile-menu');
+
+  menuBtn.addEventListener('click', () => {
+    menu.classList.toggle('hidden');
+  });
+</script>
+
 
     <!-- Hero Section -->
    <!-- Hero Section -->
@@ -301,6 +343,178 @@
       </div>
     </div>
   </div>
+  
+  <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="3000">
+    <!-- Carousel indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>   
+
+    <!-- Wrapper for carousel items -->
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <div class="flex flex-col space-y-4">
+                <!-- Review 1 -->
+                <div class="testimonial-wrapper p-4 bg-white shadow-md rounded-lg">
+                    <div class="testimonial mb-2">
+                        "Logistic Cargo Express is top-notch! Their service is incredibly reliable and fast. Highly recommend for any urgent deliveries."
+                    </div>
+                    <div class="media flex items-center">
+                        <!-- Circular Image -->
+                        <img src="https://randomuser.me/api/portraits/men/1.jpg" class="w-16 h-16 mr-3 rounded-full border-2 border-gray-300" alt="User 1">
+                        <div class="media-body">
+                            <div class="overview">
+                                <div class="name text-lg font-semibold"><b>James Turner</b></div>
+                                <div class="star-rating">
+                                    <ul class="list-inline flex">
+                                        <li class="list-inline-item text-yellow-400"><i class="fa fa-star"></i></li>
+                                        <li class="list-inline-item text-yellow-400"><i class="fa fa-star"></i></li>
+                                        <li class="list-inline-item text-yellow-400"><i class="fa fa-star"></i></li>
+                                        <li class="list-inline-item text-yellow-400"><i class="fa fa-star"></i></li>
+                                        <li class="list-inline-item text-yellow-400"><i class="fa fa-star"></i></li>
+                                    </ul>
+                                </div>
+                            </div>										
+                        </div>
+                    </div>
+                </div>
+                <!-- Review 2 -->
+                <div class="testimonial-wrapper p-4 bg-white shadow-md rounded-lg">
+                    <div class="testimonial mb-2">
+                        "Amazing service! Logistic Cargo Express helped me with my last-minute delivery. Definitely will use them again."
+                    </div>
+                    <div class="media flex items-center">
+                        <!-- Circular Image -->
+                        <img src="https://randomuser.me/api/portraits/men/2.jpg" class="w-16 h-16 mr-3 rounded-full border-2 border-gray-300" alt="User 2">
+                        <div class="media-body">
+                            <div class="overview">
+                                <div class="name text-lg font-semibold"><b>John Peterson</b></div>
+                                <div class="star-rating">
+                                    <ul class="list-inline flex">
+                                        <li class="list-inline-item text-yellow-400"><i class="fa fa-star"></i></li>
+                                        <li class="list-inline-item text-yellow-400"><i class="fa fa-star"></i></li>
+                                        <li class="list-inline-item text-yellow-400"><i class="fa fa-star"></i></li>
+                                        <li class="list-inline-item text-yellow-400"><i class="fa fa-star"></i></li>
+                                        <li class="list-inline-item text-gray-400"><i class="fa fa-star"></i></li>
+                                    </ul>
+                                </div>
+                            </div>										
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="carousel-item">
+            <div class="flex flex-col space-y-4">
+                <!-- Review 3 -->
+                <div class="testimonial-wrapper p-4 bg-white shadow-md rounded-lg">
+                    <div class="testimonial mb-2">
+                        "Very professional and timely deliveries. I’m really impressed with the level of service provided by Logistic Cargo Express."
+                    </div>
+                    <div class="media flex items-center">
+                        <!-- Circular Image -->
+                        <img src="https://randomuser.me/api/portraits/men/3.jpg" class="w-16 h-16 mr-3 rounded-full border-2 border-gray-300" alt="User 3">
+                        <div class="media-body">
+                            <div class="overview">
+                                <div class="name text-lg font-semibold"><b>Michael Roberts</b></div>
+                                <div class="star-rating">
+                                    <ul class="list-inline flex">
+                                        <li class="list-inline-item text-yellow-400"><i class="fa fa-star"></i></li>
+                                        <li class="list-inline-item text-yellow-400"><i class="fa fa-star"></i></li>
+                                        <li class="list-inline-item text-yellow-400"><i class="fa fa-star"></i></li>
+                                        <li class="list-inline-item text-yellow-400"><i class="fa fa-star"></i></li>
+                                        <li class="list-inline-item text-yellow-400"><i class="fa fa-star"></i></li>
+                                    </ul>
+                                </div>
+                            </div>										
+                        </div>
+                    </div>
+                </div>
+                <!-- Review 4 -->
+                <div class="testimonial-wrapper p-4 bg-white shadow-md rounded-lg">
+                    <div class="testimonial mb-2">
+                        "I’ve used many delivery services before, but none compare to the speed and reliability of Logistic Cargo Express. They are simply the best!"
+                    </div>
+                    <div class="media flex items-center">
+                        <!-- Circular Image -->
+                        <img src="https://randomuser.me/api/portraits/men/4.jpg" class="w-16 h-16 mr-3 rounded-full border-2 border-gray-300" alt="User 4">
+                        <div class="media-body">
+                            <div class="overview">
+                                <div class="name text-lg font-semibold"><b>David Johnson</b></div>
+                                <div class="star-rating">
+                                    <ul class="list-inline flex">
+                                        <li class="list-inline-item text-yellow-400"><i class="fa fa-star"></i></li>
+                                        <li class="list-inline-item text-yellow-400"><i class="fa fa-star"></i></li>
+                                        <li class="list-inline-item text-yellow-400"><i class="fa fa-star"></i></li>
+                                        <li class="list-inline-item text-gray-400"><i class="fa fa-star"></i></li>
+                                        <li class="list-inline-item text-gray-400"><i class="fa fa-star"></i></li>
+                                    </ul>
+                                </div>
+                            </div>										
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="carousel-item">
+            <div class="flex flex-col space-y-4">
+                <!-- Review 5 -->
+                <div class="testimonial-wrapper p-4 bg-white shadow-md rounded-lg">
+                    <div class="testimonial mb-2">
+                        "Fantastic service! They were able to deliver on time, even in peak hours. Would definitely recommend."
+                    </div>
+                    <div class="media flex items-center">
+                        <!-- Circular Image -->
+                        <img src="https://randomuser.me/api/portraits/men/5.jpg" class="w-16 h-16 mr-3 rounded-full border-2 border-gray-300" alt="User 5">
+                        <div class="media-body">
+                            <div class="overview">
+                                <div class="name text-lg font-semibold"><b>Chris Williams</b></div>
+                                <div class="star-rating">
+                                    <ul class="list-inline flex">
+                                        <li class="list-inline-item text-yellow-400"><i class="fa fa-star"></i></li>
+                                        <li class="list-inline-item text-yellow-400"><i class="fa fa-star"></i></li>
+                                        <li class="list-inline-item text-yellow-400"><i class="fa fa-star"></i></li>
+                                        <li class="list-inline-item text-yellow-400"><i class="fa fa-star"></i></li>
+                                        <li class="list-inline-item text-gray-400"><i class="fa fa-star"></i></li>
+                                    </ul>
+                                </div>
+                            </div>										
+                        </div>
+                    </div>
+                </div>
+                <!-- Review 6 -->
+                <div class="testimonial-wrapper p-4 bg-white shadow-md rounded-lg">
+                    <div class="testimonial mb-2">
+                        "Logistic Cargo Express delivered exactly as promised. I’m a repeat customer, and I plan to continue using their services."
+                    </div>
+                    <div class="media flex items-center">
+                        <!-- Circular Image -->
+                        <img src="https://randomuser.me/api/portraits/men/6.jpg" class="w-16 h-16 mr-3 rounded-full border-2 border-gray-300" alt="User 6">
+                        <div class="media-body">
+                            <div class="overview">
+                                <div class="name text-lg font-semibold"><b>Mark Thompson</b></div>
+                                <div class="star-rating">
+                                    <ul class="list-inline flex">
+                                        <li class="list-inline-item text-yellow-400"><i class="fa fa-star"></i></li>
+                                        <li class="list-inline-item text-yellow-400"><i class="fa fa-star"></i></li>
+                                        <li class="list-inline-item text-yellow-400"><i class="fa fa-star"></i></li>
+                                        <li class="list-inline-item text-yellow-400"><i class="fa fa-star"></i></li>
+                                        <li class="list-inline-item text-yellow-400"><i class="fa fa-star"></i></li>
+                                    </ul>
+                                </div>
+                            </div>										
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
   
   <section class="space-pt pb-20 bg-gray-100">
     <div class="container mx-auto px-6 md:px-12">

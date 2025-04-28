@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <title>Track List</title>
+    <style>
+        #tracks-container {
+            display: flex;
+            flex-wrap: wrap; /* Cards will wrap into new rows on smaller screens */
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+   .card {
+            border: 1px solid #ddd;
+            margin: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            width: 300px;
+        }
+        .card-header {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .card-body {
+            margin-top: 10px;
+        }
+        .button {
+            padding: 10px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+        .end-button {
+            background-color: red;
+            color: white;
+        }
+        .view-button {
+            background-color: blue;
+            color: white;
+        }
+        /* Modal Styling */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 900px;
+        }
+        #map {
+            height: 400px;
+            width: 100%;
+        }
+        .close-btn {
+            background-color: red;
+            color: white;
+            padding: 5px 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+  <!-- Top Navbar (Dark Blue) -->
+  <div class="bg-blue-900 text-white text-sm py-1 px-4 flex justify-between items-center">
+    <div>Track your shipment Anytime Anywhere</div>
+    <div class="flex items-center space-x-4">
+      <span>+237 657 765 765</span>
+      <i class="fab fa-facebook"></i>
+      <i class="fab fa-instagram"></i>
+      <i class="fab fa-linkedin"></i>
+      <i class="fab fa-dropbox"></i>
+      <i class="fab fa-whatsapp"></i> 
+      
+    </div>
+  </div>
+
+  <!-- Red Navbar -->
+  <!-- Load Tailwind + AlpineJS -->
+<!-- Red Navbar -->
+<div class="bg-red-600 text-white px-6 py-6 flex items-center justify-between relative">
+<div class="flex items-center space-x-4">
+  <img src="logo.png" alt="Logo" class="h-12 w-auto" />
+</div>
+
+<!-- Hamburger Icon -->
+<div class="md:hidden">
+  <button id="menu-btn" class="text-white text-3xl focus:outline-none">
+    <i class="fas fa-bars"></i>
+  </button>
+</div>
+
+<!-- Nav Links -->
+<div id="menu" class="hidden md:flex space-x-6 items-center text-lg">
+  <a href="#" class="hover:text-gray-300">Home</a>
+  <a href="aboutus.html" class="hover:text-gray-300">About Us</a>
+  <a href="insurance.html" class="hover:text-gray-300">Insurance</a>
+  <a href="stamp.html" class="hover:text-gray-300">Restricted Stamps</a>
+  <a href="tracks.html" class="hover:text-gray-300">Track Shipment</a>
+  <a href="contactus.html" class="hover:text-gray-300">Contact Us</a>
+  <div class="relative group">
+    <button class="hover:text-gray-300">Services</button>
+    <div class="absolute hidden group-hover:block bg-white text-black mt-2 py-2 w-48 shadow-xl z-40">
+      <a href="services/servicelist.html" class="block px-4 py-2 hover:bg-gray-100">Service List</a>
+      <a href="services/airfreight.html" class="block px-4 py-2 hover:bg-gray-100">Air Freight</a>
+      <a href="services/oceanfreight.html" class="block px-4 py-2 hover:bg-gray-100">Ocean Freight</a>
+      <a href="services/exportnimport.html" class="block px-4 py-2 hover:bg-gray-100">Export & Import</a>
+      <a href="services/roadfreight.html" class="block px-4 py-2 hover:bg-gray-100">Road Freight</a>
+      <a href="services/logistics.html" class="block px-4 py-2 hover:bg-gray-100">Logistics</a>
+    </div>
+  </div>
+  <a href="#" class="border border-white px-4 py-2 rounded hover:bg-white hover:text-red-600 transition">Get a Quote</a>
+</div>
+</div>
+
+<!-- Mobile Dropdown Menu -->
+<div id="mobile-menu" class="hidden md:hidden bg-red-600 bg-opacity-50 backdrop-blur-sm text-white px-6 py-4 space-y-3 flex flex-col text-lg">
+<a href="#" class="hover:text-gray-300">Home</a>
+<a href="aboutus.html" class="hover:text-gray-300">About Us</a>
+<a href="insurance.html" class="hover:text-gray-300">Insurance</a>
+<a href="stamp.html" class="hover:text-gray-300">Restricted Stamps</a>
+<a href="track_page.html" class="hover:text-gray-300">Track Shipment</a>
+<a href="contactus.html" class="hover:text-gray-300">Contact Us</a>
+<div>
+  <span class="block font-semibold">Services</span>
+  <div class="pl-4 space-y-2">
+    <a href="services/servicelist.html" class="block hover:text-gray-300">Service List</a>
+    <a href="services/airfreight.html" class="block hover:text-gray-300">Air Freight</a>
+    <a href="services/oceanfreight.html" class="block hover:text-gray-300">Ocean Freight</a>
+    <a href="services/exportnimport.html" class="block hover:text-gray-300">Export & Import</a>
+    <a href="services/roadfreight.html" class="block hover:text-gray-300">Road Freight</a>
+    <a href="services/logistics.html" class="block hover:text-gray-300">Logistics</a>
+  </div>
+</div>
+<a href="#" class="border border-white px-4 py-2 rounded hover:bg-white hover:text-red-600 transition">Get a Quote</a>
+</div>
+
+<script>
+const menuBtn = document.getElementById('menu-btn');
+const menu = document.getElementById('mobile-menu');
+
+menuBtn.addEventListener('click', () => {
+  menu.classList.toggle('hidden');
+});
+</script>
+<h1 class="text-3xl font-bold text-blue-700 mb-6"> Tracks</h1>
+    <div id="tracks-container" class="container mx-auto p-4">
+        <!-- Tracks will be inserted here -->
+    </div>
+    <div id="trackModal" class="modal">
+        <div class="modal-content">
+            <h2 class="text-2xl font-semibold mb-4">Track Details</h2>
+            <div id="track-info"></div>
+            <div id="map"></div>
+            <button class="close-btn" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+    <script>
+        // Fetch and display tracks
+        fetch('http://127.0.0.1:5000/tracks')
+            .then(response => response.json())
+            .then(tracks => {
+                const container = document.getElementById("tracks-container");
+                tracks.forEach(track => {
+                    const card = document.createElement('div');
+                    card.classList.add('card');
+
+                    card.innerHTML = `
+                         <div class="card-header">
+                            Track Code: ${track.code}
+                        </div>
+                        <div class="card-body">
+                            <p><strong>Departure:</strong> ${track.departure}</p>
+                            <p><strong>Arrival:</strong> ${track.arrival}</p>
+                            <p><strong>Start Time:</strong> ${track.start_time}</p>
+                            <p><strong>End Time:</strong> ${track.end_time}</p>
+                            <button class="button view-button" onclick="viewTrack('${track.code}')"><i class="fas fa-eye"></i> View Track</button>
+                            <button class="button end-button" onclick="endTrack('${track.code}')"><i class="fas fa-flag-checkered"></i> End Track</button>
+                        </div>
+                    `;
+                    container.appendChild(card);
+                });
+            });
+
+        // Function to view track (open modal with map)
+        function viewTrack(code) {
+            fetch(`http://127.0.0.1:5000/track/${code}`)
+                .then(response => response.json())
+                .then(track => {
+                    // Populate track info
+                    const trackInfoDiv = document.getElementById('track-info');
+                    trackInfoDiv.innerHTML = `
+                     <p><strong>From:</strong> ${track.departure_location.town}, ${track.departure_location.country}</p>
+                    <p><strong>To:</strong> ${track.arrival_location.town}, ${track.arrival_location.country}</p>
+                    <p><strong>Start Time:</strong> ${track.start_time}</p>
+                    <p><strong>End Time:</strong> ${track.end_time || 'Pending'}</p>
+
+                    `;
+
+                    // Show modal
+                    document.getElementById('trackModal').style.display = 'flex';
+
+                    // Initialize and display the map with markers
+                    initMap(track.departure_location, track.arrival_location);
+                });
+        }
+
+        // Function to initialize the map
+        function initMap(departureLocation, arrivalLocation) {
+            const map = L.map('map').setView([departureLocation.latitude, departureLocation.longitude], 6);
+
+            // Add tile layer
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors'
+            }).addTo(map);
+
+            // Add markers
+            L.marker([departureLocation.latitude, departureLocation.longitude]).addTo(map)
+                .bindPopup(`<b>Departure</b><br>${departureLocation.town}`).openPopup();
+            L.marker([arrivalLocation.latitude, arrivalLocation.longitude]).addTo(map)
+                .bindPopup(`<b>Arrival</b><br>${arrivalLocation.town}`).openPopup();
+
+            // Add a line between departure and arrival points
+            L.polyline([
+                [departureLocation.latitude, departureLocation.longitude],
+                [arrivalLocation.latitude, arrivalLocation.longitude]
+            ], { color: 'blue' }).addTo(map);
+        }
+
+        // Close modal
+        function closeModal() {
+            document.getElementById('trackModal').style.display = 'none';
+        }
+
+        // Function to end track
+        function endTrack(code) {
+            fetch(`/track/${code}/end`, { method: 'POST' })
+                .then(response => response.json())
+                .then(data => {
+                    alert(data.message);
+                    window.location.reload(); // Refresh the list to show updated status
+                });
+        }
+    </script>
+
+    <!-- Include Leaflet.js for map functionality -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <footer class="bg-blue-900 text-white py-10 mt-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- How To Find Us -->
+            <div>
+              <h6 class="text-xl font-semibold mb-4">How To Find Us</h6>
+              <ul class="space-y-4">
+                <li class="flex items-start">
+                  <i class="fas fa-sign text-lg mr-3 mt-1"></i>
+                  <div>
+                    <span>2105 McComas Way #300,</span>
+                    <p class="mb-0">Virginia Beach, VA 23456, USA</p>
+                  </div>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-headphones-alt text-lg mr-3 mt-1"></i>
+                  <div>
+                    <a href="https://wa.me/12098130701" target="_blank" class="flex items-center space-x-2">
+                        <i class="fab fa-whatsapp text-green-500"></i>
+                      <span>+237 657 765 765</span>
+                    </a>
+                    <p class="mb-0">Mon-Sat 8:30am-5:30pm</p>
+                  </div>
+                </li>
+                <li class="flex items-start">
+                  <i class="far fa-envelope text-lg mr-3 mt-1"></i>
+                  <div>
+                    <span>logisticargos1@gmail.com</span>
+                    <p class="mb-0">24 X 7 online support</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+      
+            <!-- Call Center -->
+            <div>
+              <h6 class="text-xl font-semibold mb-4">Call Center</h6>
+              <div>
+                <h2 class="text-2xl font-bold">+1 (209) 813-0701</h2>
+                <h3 class="text-md">and get a free estimate</h3>
+              </div>
+            </div>
+      
+            <!-- Newsletter -->
+            <div class="md:col-span-2">
+              <h3 class="text-xl font-semibold mb-2">Signup for our newsletter</h3>
+              <p class="mb-4">Sign up to our newsletter to get the latest news and offers.</p>
+              <form class="flex flex-col sm:flex-row items-center gap-4" action="email-list.php" method="post">
+                <input type="text" class="form-input w-full px-4 py-2 text-black" name="email" placeholder="Enter email">
+                <button type="submit" class="bg-white text-blue-900 hover:bg-blue-700 hover:text-white transition duration-300 px-4 py-2 rounded shadow">Subscribe Now</button>
+              </form>
+      
+              <div class="mt-8 grid grid-cols-2 md:grid-cols-3 gap-6">
+                <div>
+                  <h5 class="font-semibold mb-3">Quick links</h5>
+                  <ul class="space-y-2">
+                    <li><a href="#" class="hover:underline">About Us</a></li>
+                    <li><a href="track_page.html" class="hover:underline">Track Your Shipment</a></li>
+                    <li><a href="contactus.html" class="hover:underline">Request A Quote</a></li>
+                  </ul>
+                </div>
+                <div>
+                  <h5 class="font-semibold mb-3">Services</h5>
+                  <ul class="space-y-2">
+                    <li><a href="services/airfreight.html" class="hover:underline">Air Freight</a></li>
+                    <li><a href="services/exportnimport.html" class="hover:underline">Export & Import</a></li>
+                    <li><a href="#" class="hover:underline">Transportation</a></li>
+                  </ul>
+                </div>
+                <div>
+                  <h5 class="font-semibold mb-3 invisible md:visible">&nbsp;</h5>
+                  <ul class="space-y-2">
+                    <li><a href="services/logistics.html" class="hover:underline">Consulting Services</a></li>
+                    
+                    <li><a href="services/roadfreight.html" class="hover:underline">Road Freight</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+      
+          <!-- Bottom Footer -->
+          <div class="border-t border-white mt-10 pt-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+              <a href="index.php">
+                <img src="logo.png" alt="logo" class="h-12">
+              </a>
+              <p class="mt-4 md:mt-0 text-sm">©️ 2025 Logistic Cargo Express. All rights reserved.</p>
+            </div>
+          </div>
+        </div>
+      </footer>
+</body>
+</html>
