@@ -175,7 +175,7 @@ menuBtn.addEventListener('click', () => {
     </div>
     <script>
         // Fetch and display tracks
-        fetch('http://127.0.0.1:5000/tracks')
+        fetch('https://tracking-sytem.onrender.com/tracks')
             .then(response => response.json())
             .then(tracks => {
                 const container = document.getElementById("tracks-container");
@@ -202,7 +202,7 @@ menuBtn.addEventListener('click', () => {
 
         // Function to view track (open modal with map)
         function viewTrack(code) {
-            fetch(`http://127.0.0.1:5000/track/${code}`)
+            fetch(`https://tracking-sytem.onrender.com/track/${code}`)
                 .then(response => response.json())
                 .then(track => {
                     // Populate track info
